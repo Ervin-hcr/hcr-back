@@ -575,6 +575,38 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCoordonneeCoordonnee extends Struct.CollectionTypeSchema {
+  collectionName: 'coordonnees';
+  info: {
+    displayName: 'coordonn\u00E9e';
+    pluralName: 'coordonnees';
+    singularName: 'coordonnee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adresse: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    entreprise: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::coordonnee.coordonnee'
+    > &
+      Schema.Attribute.Private;
+    mail: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    telephone: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ville: Schema.Attribute.String;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1288,6 +1320,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::coordonnee.coordonnee': ApiCoordonneeCoordonnee;
       'api::global.global': ApiGlobalGlobal;
       'api::photos-travaux.photos-travaux': ApiPhotosTravauxPhotosTravaux;
       'api::presentation-service.presentation-service': ApiPresentationServicePresentationService;
