@@ -597,6 +597,10 @@ export interface ApiCoordonneeCoordonnee extends Struct.CollectionTypeSchema {
       'api::coordonnee.coordonnee'
     > &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     mail: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     telephone: Schema.Attribute.String;
